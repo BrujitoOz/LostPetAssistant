@@ -1,5 +1,10 @@
-# Petfinder-ChatBot-with-Actions
-## Widget Chatbot para páginas Web para registrar mascotas perdidas usando el API de OpenAI 
+# Lost Pet Assistant
+## Un chatbot widget para sitios web que ayuda a registrar mascotas perdidas de manera rápida y sencilla.
+### Funcionalidad
+* Registra mascotas perdidas utilizando la API de OpenAI
+* Almacena la información en una base de datos configurable
+* Diseñado con VoiceFlow para una fácil personalización y integración
+* Puede ser integrado en cualquier sitio web utilizando JavaScript
 
 ### Test en VoiceFlow  
 ![petfinder_1](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/8b531efd-fc94-4005-8b85-82a5a910858d)
@@ -31,4 +36,14 @@
 ### El diseño se puede personalizar 
 ![petfinder_integration_2](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/c584dc87-282f-4732-af7d-80745edfee23)
 ![petfinder_integration_3](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/98ad2451-d399-43a4-acfb-ac93cc277f57)
+
+### Integración
+El chatbot se puede integrar en cualquier sitio web utilizando JavaScript. Puedes personalizar el diseño y la funcionalidad para adaptarse a tus necesidades.
+
+### Tecnologías utilizadas
+* VoiceFlow
+* OpenAI API
+* Airtable
+* JavaScript
+
 
