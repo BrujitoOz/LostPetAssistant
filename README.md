@@ -1,49 +1,22 @@
 # Lost Pet Assistant
 ## Un chatbot widget para sitios web que ayuda a registrar mascotas perdidas de manera rápida y sencilla.
-### Funcionalidad
-* Registra mascotas perdidas utilizando la API de OpenAI
-* Almacena la información en una base de datos configurable
-* Diseñado con VoiceFlow para una fácil personalización y integración
-* Puede ser integrado en cualquier sitio web utilizando JavaScript
 
-### Test en VoiceFlow  
-![petfinder_1](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/8b531efd-fc94-4005-8b85-82a5a910858d)
+### Notas:
+* Esta es una prueba de concepto para demostrar el potencial de automatización con los modelos LLM y el uso de function calling.
+* Dado que no está destinado para producción, se utilizó Ngrok para exponer públicamente los endpoints y permitir que la plataforma Voiceflow pueda consumirlos.
+* Se requiere tener acceso al API de OpenAI para usar su modeo GPT-4o.
+* Se requiere una cuenta en Airtable con al menos una tabla en su workspace, junto con un token de autorización de su API y la URL para crear registros.
 
-### Respuesta  
-![petfinder_2](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/1af95615-bf1c-404c-be2d-6a46cc8f61ad)
+### Test en VoiceFlow
+* El chatbot maneja una conversación con lenguaje natural con el usuario
+* Pide al usuario brindar la información requerida como detalles de la mascota, e información de contacto
+* Se registra la mascota en la base de datos
 
-### Conversación con un usuario
+![](https://github.com/BrujitoOz/LostPetAssistant/blob/main/assets/pet.gif)
 
-![petfinder_3](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/3275b4df-f9ea-47e8-80ab-e5bf2468158d)
-
-### Pide la información al usuario para realizar un registro en una tabla de base de datos 
-![petfinder_4](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/df94fc78-3abd-494f-bab9-a22ece1a0071)
-
-### El bot registra la mascota perdida  
-
-![petfinder_5](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/7762fedc-90dd-4d74-8a41-5bf7ec58516a)
-
-![petfinder_6](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/47a3aabb-51da-4d6d-99b4-8016132e97ac)
-
-![petfinder_7](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/e47cbffc-aa80-4b09-b23c-ae9e82bec550)
-
-#### Se graba en una tabla de Airtable
-![petfinder_8](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/d4ebbb4b-f722-4a51-8c5d-9514bad97cbb)
 
 ### Integración en un sitio web usando javascript: 
+El chatbot puede integrarse en cualquier sitio web utilizando JavaScript. Puedes personalizar el diseño para adaptarlo a tus necesidades, incluyendo el color, imagen del avatar y descripción.
 ![petfinder_integration](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/d73b87ee-1688-4a35-9e60-b04bf1a09d57)
-
-### El diseño se puede personalizar 
 ![petfinder_integration_2](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/c584dc87-282f-4732-af7d-80745edfee23)
 ![petfinder_integration_3](https://github.com/BrujitoOz/Petfinder-ChatBot-with-Actions/assets/54969025/98ad2451-d399-43a4-acfb-ac93cc277f57)
-
-### Integración
-El chatbot se puede integrar en cualquier sitio web utilizando JavaScript. Puedes personalizar el diseño y la funcionalidad para adaptarse a tus necesidades.
-
-### Tecnologías utilizadas
-* VoiceFlow
-* OpenAI API
-* Airtable
-* JavaScript
-
-
