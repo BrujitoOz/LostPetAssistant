@@ -1,19 +1,20 @@
-import json
 import os
+import json
 import time
-from flask import Flask, request, jsonify
 import openai
-from openai import OpenAI
 import functions
+from openai import OpenAI
 from packaging import version
+from flask import Flask, request, jsonify
 
 required_version = version.parse("1.1.1")
 current_version = version.parse(openai.__version__)
-OPENAI_API_KEY = os.environ['OPENAI_API_KEY']
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 if current_version < required_version:
   raise ValueError(
-      f"Error: OpenAI version {openai.__version__} is less than the required version 1.1.1"
+    f"Error: OpenAI version {openai.__version__} is less than the required version 1.1.1"
   )
 else:
   print("OpenAI version is compatible.")
@@ -22,7 +23,6 @@ app = Flask(__name__)
 client = OpenAI(api_key=OPENAI_API_KEY)
 assistant_id = functions.create_assistant(client)
 
-
 # Start conversation thread
 @app.route('/start', methods=['GET'])
 def start_conversation():
@@ -30,7 +30,6 @@ def start_conversation():
   thread = client.beta.threads.create()
   print(f"New thread created with ID: {thread.id}")
   return jsonify({"thread_id": thread.id})
-
 
 # Generate response
 @app.route('/chat', methods=['POST'])
@@ -44,19 +43,14 @@ def chat():
     return jsonify({"error": "Missing thread_id"}), 400
   print(f"Received message: {user_input} for thread ID: {thread_id}")
 
-  client.beta.threads.messages.create(thread_id=thread_id,
-                                      role="user",
-                                      content=user_input)
+  client.beta.threads.messages.create(thread_id=thread_id, role="user", content=user_input)
 
   # Run the Assistant
-  run = client.beta.threads.runs.create(thread_id=thread_id,
-                                        assistant_id=assistant_id)
+  run = client.beta.threads.runs.create(thread_id=thread_id, assistant_id=assistant_id)
 
   # Check if the Run requires action
   while True:
-    run_status = client.beta.threads.runs.retrieve(thread_id=thread_id,
-                                                   run_id=run.id)
-
+    run_status = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
     if run_status.status == 'completed':
       break
     elif run_status.status == 'requires_action':
@@ -64,20 +58,17 @@ def chat():
         if tool_call.function.name == "create_lead":
           # Process lead creation
           arguments = json.loads(tool_call.function.arguments)
-          output = functions.create_lead(arguments["ownerName"],
+          output = functions.create_lead(arguments["owner_name"],
                                          arguments["phone"],
-                                         arguments["petName"],
+                                         arguments["pet_name"],
                                          arguments["email"],
-                                         arguments["petInfo"])
+                                         arguments["pet_info"])
 
-          client.beta.threads.runs.submit_tool_outputs(thread_id=thread_id,
-                                                       run_id=run.id,
+          client.beta.threads.runs.submit_tool_outputs(thread_id=thread_id, run_id=run.id,
                                                        tool_outputs=[{
-                                                           "tool_call_id":
-                                                           tool_call.id,
-                                                           "output":
-                                                           json.dumps(output)
-                                                       }])
+                                                         "tool_call_id": tool_call.id,
+                                                           "output": json.dumps(output)
+                                                           }])
       time.sleep(1)  # Wait for a second before checking again
 
   # Retrieve and return the latest message from the assistant
