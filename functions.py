@@ -8,13 +8,13 @@ from prompts import assistant_instructions
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 AIRTABLE_API_KEY = os.getenv("AIRTABLE_API_KEY")
-
+AIRTABLE_CREATE_LEAD_URL = os.getenv("AIRTABLE_CREATE_LEAD_URL")
 # Init OpenAI Client
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 # Add lead to Airtable
 def create_lead(owner_name, phone, pet_name, email, pet_info):
-    url = "https://api.airtable.com/v0/appGb93GAfGkUGLG5/LostPet"
+    url = AIRTABLE_CREATE_LEAD_URL
     headers = {
         "Authorization": AIRTABLE_API_KEY,
         "Content-Type": "application/json"
